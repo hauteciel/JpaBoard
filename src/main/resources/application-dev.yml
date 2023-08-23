@@ -1,0 +1,60 @@
+# 서버 포트 번호
+server:
+  port: 8091
+
+spring:
+  # 콘솔 ANSI 색상
+  output:
+    ansi:
+      enabled: always
+
+  # Thymeleaf 설정
+  thymeleaf:
+    cache: false
+    prefix: classpath:templates/views/
+
+  # spring-jdbc 설정시 아래 정보 없으면 가동시 에러 발생
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mydb?useSSL=false&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    username: myuser
+    password: 1234
+
+  jpa:
+    # JPA에서 생성되는 SQL 문을 콘솔 출력
+    show-sql: true
+
+    # 쿼리가 훨씬 보기 좋게 정렬되어 로그 찍힌다
+    properties:
+      hibernate.format_sql: true
+
+    # DDL(create, alter, drop) 정의시 DB의 고유 기능을 사용할 수 있다.
+    # create: 서버 가동할때마다 기존 테이블을 삭제하고 새로 생성
+    # update: DB테이블와 엔티티 매핑정보를 비교해서 변경사항이 있는 경우만 수정 (ALTER). 테이블 없으면 CREATE
+    # create-drop: 기본적으로 create 와 동일한 동작을 하나, 종료시점에서 drop
+    # none : production 환경으로 배포할때는 반드시 none 으로 하자.
+    hibernate:
+      ddl-auto: update
+
+# 각종 설정값들을 임의로 설정한뒤 @Value 로 설정값을 주입받아 사용 가능
+app:
+  # 파일 업로드 경로
+  upload:
+    path: upload
+
+  # 페이징 관련 세팅값
+  pagination:
+    write_pages: 10  # 기본 write_pages 값. 한 [페이징] 당 몇개의 페이지가 표시되나
+    page_rows: 10    # 기본 page_rows 값.  한 '페이지'에 몇개의 글을 리스트 할것인가?
+    
+
+
+
+
+
+
+
+
+
+
+
