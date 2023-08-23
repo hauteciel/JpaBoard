@@ -25,7 +25,7 @@ spring:
     # create-drop: 기본적으로 create 와 동일한 동작을 하나, 종료시점에서 drop
     # none : production 환경으로 배포할때는 반드시 none 으로 하자.
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
 
 # 각종 설정값들을 임의로 설정한뒤 @Value 로 설정값을 주입받아 사용 가능
 app:
